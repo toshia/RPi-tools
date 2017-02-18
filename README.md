@@ -22,6 +22,7 @@ Raspberry Piの各種環境構築に役立つかもしれないPlaybookをまと
 | ruby2.1 | Ruby 2.1をインストールする | jessie | なし |
 | timelapse-camera | タイムラプスカメラ環境を作る | なし | なし |
 | wifi | NetworkManager用のWi-Fi設定ファイルを投入する | network-manager | あり |
+| mpd | お手軽mpdサーバ | なし | なし |
 
 ### vars
 
@@ -121,3 +122,11 @@ mikutter.yml
 ```
 mypc:ansible user$ ansible-playbook -i hosts -l raspi1 mikutter.yml 
 ```
+
+## mpdについて
+
+mpdデーモンが起動するほか、音楽ディレクトリをmusicという名前で、sambaで公開します。sambaはデフォルトでは認証がかかっていないので、うまい具合にやってください。
+
+Raspberry Piのホスト名がHOSTの場合は、別のマシンから `\\HOST\music` でアクセスして、音楽ファイルを適当に放り込むと管理されるようになります。
+
+サウンドはRaspberry Piのイヤホンジャックから出力されます。
