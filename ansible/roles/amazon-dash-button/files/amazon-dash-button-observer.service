@@ -1,0 +1,11 @@
+[Unit]
+Description=Pluggaloid for Amazon Dash Button
+After=network.target
+
+[Service]
+Environment=BUNDLE_GEMFILE=/usr/local/share/pluggaloid/amazon-dash-button-observer/Gemfile
+ExecStart=/usr/bin/bundle exec ruby /usr/local/share/pluggaloid/amazon-dash-button-observer/app.rb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

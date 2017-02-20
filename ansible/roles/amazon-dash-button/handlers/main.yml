@@ -1,0 +1,8 @@
+- name: Enable and Restart Amazon Dash Button Observer for systemd
+  systemd:
+    name: amazon-dash-button-observer
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  sudo: yes
+
