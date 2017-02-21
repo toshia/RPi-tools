@@ -1,0 +1,5 @@
+---
+- hosts: mpc-dash-button
+  roles:
+  - amazon-dash-button
+  - mpc-dash-button

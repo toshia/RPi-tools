@@ -88,6 +88,15 @@ remote_path: /var/www/html/data (撮影した写真をSCPでアップロード�
 remote_count_path: /var/www/html/count.dat (カウントファイルのSCPアップロード先パス)
 ```
 
+#### mpc\_dash\_button用のvars
+
+```yaml
+amazon-dash-button-macaddr: Amazon Dash ButtonのMACアドレス
+mpd:
+  host: localhost (操作するmpdサーバが動いているホスト)
+  port: 6600 (操作するmpdサーバのポート)
+```
+
 ### hosts
 
 基本的に[all]以下にホスト名をためておいて、-lオプションで絞り込むのが楽だと思う。また、ユーザーはあらかじめ書いておくと楽。
