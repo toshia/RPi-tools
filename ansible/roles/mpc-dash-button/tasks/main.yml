@@ -1,0 +1,16 @@
+- name: install packages
+  apt: >
+    name={{ item }}
+    state=present
+  with_items:
+    - mpc
+  sudo: yes
+
+- name: Install mpc plugin to Pluggaloid for Amazon Dash Button
+  template:
+    src: mpc_dash.rb.j2
+    dest: /usr/local/share/pluggaloid/amazon-dash-button-observer/plugin/mpc_dash.rb
+    mode: 0755
+  sudo: yes
+  notify:
+    - Enable and Restart Amazon Dash Button Observer for systemd
