@@ -1,6 +1,6 @@
 Plugin.create :mpc_dash do
   on_amazon_dash_button_pushed do |interface, mac|
-    if mac == '{{ amazon_dash_button_macaddr }}'
+    if %w<{{ mpc_dash_buttons | join(' ') }}>.include?(mac)
       system('/usr/bin/mpc --host {{ mpd.host }} --port {{ mpd.port }} toggle')
     end
   end

@@ -91,7 +91,9 @@ remote_count_path: /var/www/html/count.dat (カウントファイルのSCPアッ
 #### mpc\_dash\_button用のvars
 
 ```yaml
-amazon-dash-button-macaddr: Amazon Dash ButtonのMACアドレス
+mpc_dash_buttons:
+  - (Amazon Dash ButtonのMACアドレス)
+  - (複数記述が可能)
 mpd:
   host: localhost (操作するmpdサーバが動いているホスト)
   port: 6600 (操作するmpdサーバのポート)
