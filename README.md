@@ -22,6 +22,7 @@ Raspberry Piの各種環境構築に役立つかもしれないPlaybookをまと
 | ruby2.1 | Ruby 2.1をインストールする | jessie | なし |
 | timelapse-camera | タイムラプスカメラ環境を作る | なし | なし |
 | wifi | NetworkManager用のWi-Fi設定ファイルを投入する | network-manager | あり |
+| amazon-dash-button | Amazon Dash Buttonの押下を監視するPluggaloidデーモンをインストールする | なし | なし |
 
 ### vars
 
