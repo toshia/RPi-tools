@@ -1,0 +1,27 @@
+- name: install mpd essentials
+  apt:
+    name:
+      - mpd
+      - samba
+  sudo: yes
+
+- name: copy mpd setting
+  copy:
+    src: mpd.conf
+    dest: /etc/mpd.conf
+  sudo: yes
+  notify: reload mpd
+
+- name: export music directory via samba
+  copy:
+    src: smb.conf
+    dest: /etc/samba/smb.conf
+  sudo: yes
+  notify: reload samba
+
+- name: create music directory
+  file:
+    path: /var/lib/mpd/music/
+    state: directory
+    mode: 0777
+  sudo: yes

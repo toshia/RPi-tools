@@ -1,0 +1,7 @@
+- name: reload samba
+  service: name=samba-ad-dc state=restarted
+  sudo: yes
+
+- name: reload mpd
+  service: name=mpd state=restarted
+  sudo: yes
