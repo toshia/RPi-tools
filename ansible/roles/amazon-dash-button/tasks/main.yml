@@ -1,0 +1,45 @@
+- name: Install Ruby and git
+  apt: >
+    default_release=jessie
+    name={{ item }}
+    state=present
+    update_cache=yes
+    cache_valid_time=3600
+  with_items:
+    - ruby
+    - bundler
+    - git
+    - tcpdump
+  when:
+    - ansible_os_family != "Darwin"
+  sudo: yes
+
+- name: Create Pluggaloid Directory
+  file: >-
+    path={{ adb_directory }}
+    state=directory
+    mode=0755
+  sudo: yes
+
+- name: Install Amazon Dash Button observer
+  git: >-
+    repo=https://github.com/toshia/pluggaloid-amazon-dash-button.git
+    dest={{ adb_directory }}
+    version=master
+  sudo: yes
+  notify:
+    - Enable and Restart Amazon Dash Button Observer for systemd
+
+- name: run bundler (at first time, this may take a lot of minutes.)
+  command: >-
+    bundle --path=vendor/bundle --frozen
+    chdir={{ adb_directory }}
+  sudo: yes
+
+- name: Put systemd service file
+  copy:
+    src: amazon-dash-button-observer.service
+    dest: /etc/systemd/system/amazon-dash-button-observer.service
+  sudo: yes
+  notify:
+    - Enable and Restart Amazon Dash Button Observer for systemd
