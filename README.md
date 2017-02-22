@@ -23,6 +23,8 @@ Raspberry Piの各種環境構築に役立つかもしれないPlaybookをまと
 | timelapse-camera | タイムラプスカメラ環境を作る | なし | なし |
 | wifi | NetworkManager用のWi-Fi設定ファイルを投入する | network-manager | あり |
 | mpd | お手軽mpdサーバ | なし | なし |
+| amazon-dash-button | Amazon Dash Buttonの押下を監視するPluggaloidデーモンをインストールする | なし | なし |
+| mpc-dash-button | Amazon Dash ButtonでMPDの再生・停止を操作する機能を追加する | amazon-dash-button | あり |
 
 ### vars
 
