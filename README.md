@@ -25,6 +25,7 @@ Raspberry Piの各種環境構築に役立つかもしれないPlaybookをまと
 | mpd | お手軽mpdサーバ | なし | なし |
 | amazon-dash-button | Amazon Dash Buttonの押下を監視するPluggaloidデーモンをインストールする | なし | なし |
 | mpc-dash-button | Amazon Dash ButtonでMPDの再生・停止を操作する機能を追加する | amazon-dash-button | あり |
+| ympd | MPDのWebインターフェイス | なし | あり |
 
 ### vars
 
@@ -100,6 +101,17 @@ mpc_dash_buttons:
 mpd:
   host: localhost (操作するmpdサーバが動いているホスト)
   port: 6600 (操作するmpdサーバのポート)
+```
+
+#### ympd用のvars
+
+デフォルトでは、 `http://hostname.local:8080/` に接続するとympdにアクセスでき、そのままWeb上でプレイリストの再生などを行えます。
+ympdのサイトには、root権限で動かして80番ポートで待ち受けるというのが載ってましたが、このPlaybookでは新たにUnixユーザを作って、その権限で起動するようになっています。
+そのため、ポートは8080です。気が向いたらうまいこと80番でアクセスできるようにする…かも？
+
+```yaml
+ympd_unix_user: ympd # ympdデーモンを動かすunixユーザ（無ければ作られます）
+ympd_port: 8080 # Webのポート。今のところ、80番では動かせません
 ```
 
 ### hosts

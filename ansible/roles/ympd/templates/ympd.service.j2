@@ -1,0 +1,11 @@
+[Unit]
+Description=ympd
+After=network.target
+
+[Service]
+ExecStart=/usr/local/share/ympd/ympd --webport {{ ympd_port }}
+Restart=always
+User={{ ympd_unix_user }}
+
+[Install]
+WantedBy=multi-user.target
