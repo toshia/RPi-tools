@@ -1,0 +1,4 @@
+---
+- hosts: ympd
+  roles:
+  - ympd

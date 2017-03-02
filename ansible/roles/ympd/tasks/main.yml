@@ -1,0 +1,35 @@
+- name: "Create unix user `{{ ympd_unix_user }}' for ympd"
+  user: "name={{ ympd_unix_user }}"
+  sudo: yes
+
+- name: Get ympd
+  get_url:
+    url: https://www.ympd.org/downloads/ympd-1.2.3-armhf.tar.bz2
+    dest: /usr/local/share/ympd.tar.bz2
+    mode: 0755
+  sudo: yes
+
+- name: Create ympd directory
+  file:
+    path: /usr/local/share/ympd
+    state: directory
+    mode: 0755
+  sudo: yes
+
+- name: Extract ympd
+  unarchive:
+    copy: no
+    src: /usr/local/share/ympd.tar.bz2
+    dest: /usr/local/share/ympd/
+    mode: 0755
+  sudo: yes
+  notify:
+    - Enable and Restart ympd for systemd
+
+- name: Put systemd service file for ympd
+  template:
+    src: ympd.service.j2
+    dest: /etc/systemd/system/ympd.service
+  sudo: yes
+  notify:
+    - Enable and Restart ympd for systemd

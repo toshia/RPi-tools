@@ -22,6 +22,7 @@ Raspberry Piの各種環境構築に役立つかもしれないPlaybookをまと
 | ruby2.1 | Ruby 2.1をインストールする | jessie | なし |
 | timelapse-camera | タイムラプスカメラ環境を作る | なし | なし |
 | wifi | NetworkManager用のWi-Fi設定ファイルを投入する | network-manager | あり |
+| ympd | MPDのWebインターフェイス | なし | あり |
 
 ### vars
 
@@ -86,6 +87,17 @@ photo_file: /home/pi/photo.jpg (撮影した写真を保存するパス)
 count_file: /home/pi/count.dat (カウントファイルのパス)
 remote_path: /var/www/html/data (撮影した写真をSCPでアップロードする先のディレクトリ)
 remote_count_path: /var/www/html/count.dat (カウントファイルのSCPアップロード先パス)
+```
+
+#### ympd用のvars
+
+デフォルトでは、 `http://hostname.local:8080/` に接続するとympdにアクセスでき、そのままWeb上でプレイリストの再生などを行えます。
+ympdのサイトには、root権限で動かして80番ポートで待ち受けるというのが載ってましたが、このPlaybookでは新たにUnixユーザを作って、その権限で起動するようになっています。
+そのため、ポートは8080です。気が向いたらうまいこと80番でアクセスできるようにする…かも？
+
+```yaml
+ympd_unix_user: ympd # ympdデーモンを動かすunixユーザ（無ければ作られます）
+ympd_port: 8080 # Webのポート。今のところ、80番では動かせません
 ```
 
 ### hosts

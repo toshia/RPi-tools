@@ -1,0 +1,8 @@
+- name: Enable and Restart ympd for systemd
+  systemd:
+    name: ympd
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  sudo: yes
+
